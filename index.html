@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Atama 👻🎀</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
+
+:root{--pink:#ff70ad;--purple:#b69aff;--ink:#793d72}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Nunito,sans-serif;color:var(--ink);background:linear-gradient(145deg,#ffe4f0,#eee4ff,#fff5e8);overflow-x:hidden}
+button,textarea{font:inherit}
+button{cursor:pointer;touch-action:manipulation}
+button:focus-visible,textarea:focus-visible{outline:3px solid #9e64c8;outline-offset:3px}
+.hidden{display:none!important}
+#sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:20}
+.float{position:absolute;bottom:-45px;animation:floatUp 4s linear forwards}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+@keyframes bounce{50%{transform:translateY(-9px) rotate(3deg)}}
+@keyframes enter{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes glow{50%{box-shadow:0 0 25px #ff9dcc}}
+@keyframes shake{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.wrap{width:min(100% - 24px,700px);margin:auto;padding:22px 0 35px}
+.card{background:#ffffffdf;border:2px solid white;border-radius:29px;padding:26px 20px;text-align:center;box-shadow:0 15px 45px #a76b961a;backdrop-filter:blur(9px);animation:enter .4s}
+.hero{margin-top:5vh;padding:30px 20px}
+h1{font-size:clamp(35px,9vw,57px);line-height:1.2;color:#e34f9c;margin:17px 0}
+h2{font-size:25px;margin:12px 0}
+p{font-size:14px;line-height:1.85}
+.script{font-family:Pacifico,cursive}
+.eyebrow{font-size:10px;letter-spacing:3px;font-weight:900;color:#b44b99}
+.sticker{font-size:70px;display:inline-block;animation:bounce 2s infinite}
+.btn{border:0;border-radius:40px;padding:13px 19px;margin:6px 3px;background:linear-gradient(110deg,#ff70ad,#ad8aff);color:white;font-size:13px;font-weight:900;box-shadow:0 7px 18px #db69a72b;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.soft{background:#fff0f8;color:#a13f80;border:1px solid #ffc3df;box-shadow:none}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px}
+.nav span{font-size:10px;font-weight:900;background:#ffffffc9;padding:10px 12px;border-radius:30px}
+.panel{background:linear-gradient(140deg,#fff3f9,#f4efff);border:1px dashed #e8a6cd;border-radius:22px;padding:20px 15px;margin-top:16px;animation:enter .35s}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.choice{border:1px solid #f2c0dc;border-radius:19px;background:linear-gradient(140deg,#fff,#fff0f8);color:#913b7b;padding:14px 8px;min-height:88px;font-weight:900;font-size:12px;transition:.2s}
+.choice:hover{transform:translateY(-3px)}
+.choice.selected-choice{border:2px solid #e959a2;background:#ffe5f2;box-shadow:0 0 0 3px #ffd4e8}
+.choice span{display:block;font-size:29px;margin-bottom:7px}
+.progress{height:8px;background:#f7d9e9;border-radius:20px;overflow:hidden;margin:16px 0}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,#ff70ad,#aa91ff);transition:width .3s}
+.big-number{font-size:clamp(68px,17vw,110px);font-weight:900;line-height:1.3;color:#e959a2}
+.result{padding:18px;background:#fff0f8;border-radius:18px;margin-top:15px;line-height:1.8;animation:enter .3s}
+.letter{white-space:pre-line;text-align:left;line-height:2;font-size:13px;background:#fffaf0;border:2px dashed #e7a9ce;border-radius:20px;padding:20px 16px}
+.field{width:100%;padding:13px;border:1px solid #edb5d5;background:white;border-radius:13px;color:var(--ink);margin:8px 0}
+.small{font-size:11px;color:#a5799b}
+footer{text-align:center;font-size:12px;padding:20px}
+#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:30;background:#843c77;color:white;padding:12px 18px;border-radius:30px;font-size:12px;max-width:90%;text-align:center}
+@media(max-width:390px){.wrap{width:calc(100% - 18px)}.card{padding:23px 13px}.choice{font-size:11px;padding:12px 4px}}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<div id="toast" class="hidden" role="status"></div>
+
+<section id="home" class="wrap">
+ <div class="card hero">
+  <div style="font-size:42px">🎀🧸🦋</div>
+  <div class="eyebrow">A SECRET UNIVERSE MADE FOR YOU</div>
+  <h1 class="script">Happy Birthday,<br>Atama 👻💗</h1>
+  <div class="sticker">👻💕</div>
+  <p>Hey, my cutest birthday girl! 🥹</p>
+  <p>I've hidden little surprises, secret wishes, friendship games and lots of love inside this magical world.</p>
+  <p>Twenty beautiful years behind you. Your 21st chapter begins now! 🎂✨</p>
+  <button class="btn" onclick="enter()">UNLOCK YOUR BIRTHDAY WORLD 💌</button>
+  <p class="small">⚠️ Warning: excessive cuteness and happy tears ahead! 🫣</p>
+ </div>
+</section>
+
+<main id="main" class="wrap hidden">
+ <div class="nav"><span>👻 ATAMA'S PRIVATE WORLD</span><span id="counter">0 / 10 completed</span></div>
+ <div class="card">
+  <div class="sticker">🎁</div>
+  <h2 class="script">Choose Your Surprise!</h2>
+  <p>Choose one door, birthday girl. Finish it before opening another. 💗</p>
+  <div class="progress"><div id="bar"></div></div>
+  <div id="menu" class="grid"></div>
+  <div class="panel"><b>🎀 One surprise at a time!</b><p>Each surprise gets its own screen. Finish it to return to the menu.</p></div>
+ </div>
+</main>
+
+<section id="page" class="wrap hidden">
+ <div class="nav"><button class="btn soft" onclick="back()">← Surprise Menu</button><span id="step"></span></div>
+ <div id="pageBody" class="card"></div>
+ <div class="card" style="margin-top:12px"><button class="btn" onclick="finish()">FINISH SURPRISE 💗</button></div>
+</section>
+<footer>Made with madness, friendship and endless love for Atama 👻🎀</footer>
+
+<script>
+const surprises=[
+ ["🔢","20 Years + 21st Chapter"],
+ ["🌍","Birthday Wishes in 21 Languages"],
+ ["💎","21 Beautiful Qualities"],
+ ["🎀","Pick Your Mystery Heart"],
+ ["🔮","Birthday Fortune Machine"],
+ ["🏆","Atama's Bestie Awards"],
+ ["🫶","Our Friendship Quiz"],
+ ["🎡","Spin the Birthday Wheel"],
+ ["🤝","Your Wish & My Promise"],
+ ["💌","A Letter From My Heart"]
+];
+
+let active=-1,completed=new Set(),ageTimer=null,toastTimer=null;
+function $(id){return document.getElementById(id)}
+
+function enter(){
+ $('home').classList.add('hidden');
+ $('main').classList.remove('hidden');
+ makeMenu();confetti(28);scrollTo(0,0);
+}
+
+function makeMenu(){
+ $('menu').innerHTML='';
+ surprises.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.className='choice';
+  b.innerHTML=`<span>${s[0]}</span>${i+1}. ${s[1]}`;
+  b.onclick=()=>openSurprise(i);
+  $('menu').appendChild(b);
+ });
+ $('counter').textContent=`${completed.size} / ${surprises.length} completed`;
+ $('bar').style.width=`${completed.size/surprises.length*100}%`;
+}
+
+function openSurprise(i){
+ if(ageTimer){clearInterval(ageTimer);ageTimer=null}
+ active=i;
+ $('main').classList.add('hidden');
+ $('page').classList.remove('hidden');
+ $('step').textContent=`SURPRISE ${i+1} OF ${surprises.length}`;
+ $('pageBody').innerHTML='';
+ scrollTo(0,0);
+
+ [agePage,languagePage,qualitiesPage,heartPage,fortunePage,
+  awardsPage,quizPage,wheelPage,promisePage,letterPage][i]();
+
+ const reveal=document.createElement('div');
+ reveal.id='selectionResult';
+ reveal.className='result hidden';
+ reveal.setAttribute('aria-live','polite');
+ reveal.style.cssText='min-height:110px;margin-top:18px;border:2px dashed #e7a9ce;background:#fffaf0;border-radius:20px;padding:20px;text-align:center;';
+ reveal.innerHTML='<div style="font-size:32px">💌</div><b>Your surprise will appear here</b><p>Tap any square above to reveal its message in this box. 💗</p>';
+ $('pageBody').appendChild(reveal);
+}
+
+function back(){
+ if(ageTimer){clearInterval(ageTimer);ageTimer=null}
+ $('page').classList.add('hidden');
+ $('main').classList.remove('hidden');
+ makeMenu();scrollTo(0,0);
+}
+
+function finish(){completed.add(active);confetti(18);back()}
+
+function intro(icon,title,subtitle){
+ $('pageBody').innerHTML=`<div style="font-size:54px">${icon}</div><div class="eyebrow">JUST FOR YOU, ATAMA 👻</div><h2>${title}</h2><p>${subtitle}</p>`;
+}
+
+function panel(html){
+ const e=document.createElement('div');
+ e.className='panel';e.innerHTML=html;
+ $('pageBody').appendChild(e);
+ return e;
+}
+
+function showSelection(icon,title,message){
+ const r=$('selectionResult');
+ if(!r)return;
+ r.classList.remove('hidden');r.innerHTML='';
+ const em=document.createElement('div');
+ em.style.fontSize='38px';em.textContent=icon;
+ const h=document.createElement('h2');h.textContent=title;
+ const p=document.createElement('p');p.textContent=message;
+ r.append(em,h,p);
+ r.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function confetti(n=20){
+ const sky=$('sky');
+ const emojis=['💗','💕','💖','✨','🌸','🎀','👻','🎉','🦋','🫧'];
+ for(let i=0;i<n;i++){
+  const e=document.createElement('span');
+  e.className='float';
+  e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+'%';
+  e.style.fontSize=(16+Math.random()*22)+'px';
+  e.style.animationDuration=(3+Math.random()*3)+'s';
+  e.style.animationDelay=Math.random()+'s';
+  sky.appendChild(e);
+  setTimeout(()=>e.remove(),7000);
+ }
+}
+
+function toast(t){
+ $('toast').textContent=t;
+ $('toast').classList.remove('hidden');
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>$('toast').classList.add('hidden'),2800);
+}
+
+/* 1 — COUNTDOWN */
+function agePage(){
+ intro('🎂','20 Years of Atama','Count from 1 to 20, then celebrate your 21st chapter!');
+ panel(`
+  <div class="big-number" id="ageNumber">1</div>
+  <p id="ageCaption">Chapter 1 of your life story 🌷</p>
+  <div class="progress"><div id="ageBar"></div></div>
+  <button class="btn" id="ageStart">START THE COUNTDOWN 🚀</button>
+  <div id="ageFinal" class="result hidden">
+   <div style="font-size:50px">🎉👑🎂</div>
+   <h2>WELCOME TO 21, ATAMA!</h2>
+   <p>Twenty years of memories, laughter and growth. May your 21st year bring confidence, love, success and beautiful new memories! 💗🦋</p>
+  </div>
+ `);
+
+ $('ageStart').onclick=function(){
+  this.disabled=true;
+  this.textContent='COUNTING YOUR BEAUTIFUL YEARS…';
+  let count=1;
+  ageTimer=setInterval(()=>{
+   count++;
+   $('ageNumber').textContent=count;
+   $('ageCaption').textContent=`Chapter ${count} of your life story 🌷`;
+   $('ageBar').style.width=count/20*100+'%';
+
+   if(count>=20){
+    clearInterval(ageTimer);ageTimer=null;
+    $('ageNumber').textContent='20 + 1';
+    $('ageCaption').textContent='A new chapter begins! ✨';
+    $('ageFinal').classList.remove('hidden');
+    $('ageStart').textContent='21ST YEAR UNLOCKED 🎉';
+    $('ageStart').disabled=false;
+    $('ageStart').onclick=()=>confetti(30);
+    confetti(35);
+   }else confetti(2);
+  },350);
+ };
+}
+
+/* 2 — BIRTHDAY WISHES IN 21 LANGUAGES */
+const langs=[
+["English","Happy Birthday, Atama! May your 21st year be filled with love, laughter, beautiful memories and dreams coming true! 🎂💗"],
+["Hindi","जन्मदिन मुबारक हो, अतामा! तुम्हारा 21वाँ साल प्यार, खुशियों, खूबसूरत यादों और सपनों की पूर्ति से भरा हो! 🎂💗"],
+["Marathi","वाढदिवसाच्या हार्दिक शुभेच्छा, अतामा! तुझं २१वं वर्ष प्रेम, आनंद, सुंदर आठवणी आणि स्वप्नपूर्तीने भरलेलं असो! 🎂💗"],
+["Spanish","¡Feliz cumpleaños, Atama! ¡Que tu año número 21 esté lleno de amor, risas, recuerdos hermosos y sueños cumplidos! 🎂💗"],
+["French","Joyeux anniversaire, Atama ! Que ta 21e année soit remplie d’amour, de rires, de beaux souvenirs et de rêves réalisés ! 🎂💗"],
+["German","Alles Gute zum Geburtstag, Atama! Möge dein 21. Lebensjahr voller Liebe, Lachen, wunderschöner Erinnerungen und erfüllter Träume sein! 🎂💗"],
+["Italian","Buon compleanno, Atama! Che il tuo ventunesimo anno sia pieno di amore, risate, splendidi ricordi e sogni realizzati! 🎂💗"],
+["Portuguese","Feliz aniversário, Atama! Que seu 21º ano seja cheio de amor, risadas, lindas lembranças e sonhos realizados! 🎂💗"],
+["Japanese","アタマ、お誕生日おめでとう！21歳の一年が愛と笑顔、素敵な思い出、そして夢の実現でいっぱいになりますように！ 🎂💗"],
+["Korean","아타마, 생일 축하해! 스물한 살의 한 해가 사랑과 웃음, 아름다운 추억과 꿈을 이루는 기쁨으로 가득하길 바라! 🎂💗"],
+["Chinese","Atama，生日快乐！愿你二十一岁这一年充满爱、欢笑、美好回忆，所有梦想都能实现！ 🎂💗"],
+["Arabic","عيد ميلاد سعيد يا أتاما! أتمنى أن تكون سنتك الحادية والعشرون مليئة بالحب والضحكات والذكريات الجميلة وتحقيق الأحلام! 🎂💗"],
+["Bengali","শুভ জন্মদিন, আতামা! তোমার একুশতম বছর ভালোবাসা, হাসি, সুন্দর স্মৃতি আর স্বপ্নপূরণে ভরে উঠুক! 🎂💗"],
+["Gujarati","જન્મદિવસની શુભેચ્છાઓ, અતામા! તારું ૨૧મું વર્ષ પ્રેમ, હાસ્ય, સુંદર યાદો અને સપનાં પૂરાં થવાની ખુશીઓથી ભરેલું રહે! 🎂💗"],
+["Tamil","இனிய பிறந்தநாள் வாழ்த்துகள், அதாமா! உன் 21வது ஆண்டு அன்பு, சிரிப்பு, அழகான நினைவுகள் மற்றும் கனவுகள் நனவாகும் மகிழ்ச்சியால் நிறைந்திருக்கட்டும்! 🎂💗"],
+["Telugu","పుట్టినరోజు శుభాకాంక్షలు, అతామా! నీ 21వ సంవత్సరం ప్రేమ, నవ్వులు, అందమైన జ్ఞాపకాలు, కలలు నెరవేరే ఆనందంతో నిండిపోవాలి! 🎂💗"],
+["Kannada","ಹುಟ್ಟುಹಬ್ಬದ ಶುಭಾಶಯಗಳು, ಅತಾಮಾ! ನಿನ್ನ 21ನೇ ವರ್ಷ ಪ್ರೀತಿ, ನಗು, ಸುಂದರ ನೆನಪುಗಳು ಮತ್ತು ಕನಸುಗಳ ನನಸಿನಿಂದ ತುಂಬಿರಲಿ! 🎂💗"],
+["Malayalam","ജന്മദിനാശംസകൾ, അതാമാ! നിന്റെ ഇരുപത്തിയൊന്നാം വർഷം സ്നേഹവും ചിരിയും മനോഹരമായ ഓർമ്മകളും സഫലമായ സ്വപ്നങ്ങളും കൊണ്ട് നിറയട്ടെ! 🎂💗"],
+["Russian","С днём рождения, Атама! Пусть твой двадцать первый год будет наполнен любовью, смехом, прекрасными воспоминаниями и исполнением мечтаний! 🎂💗"],
+["Turkish","Doğum günün kutlu olsun, Atama! 21. yaşın sevgi, kahkaha, güzel anılar ve gerçekleşen hayallerle dolu olsun! 🎂💗"],
+["Indonesian","Selamat ulang tahun, Atama! Semoga tahun ke-21 dalam hidupmu dipenuhi cinta, tawa, kenangan indah, dan mimpi yang menjadi kenyataan! 🎂💗"]
+];
+
+function languagePage(){
+ intro('🌍','21 Languages, One Atama','Tap each language to reveal a complete birthday wish, not just the words “Happy Birthday”.');
+ const g=document.createElement('div');g.className='grid';
+ langs.forEach((x,i)=>{
+  const b=document.createElement('button');b.className='choice';
+  b.innerHTML=`<span>${['🎂','🌸','💗','🌈','🦋'][i%5]}</span>${i+1}. ${x[0]}`;
+  b.onclick=()=>{
+   showSelection('💌',x[0]+' Birthday Wish',x[1]);
+   b.classList.add('selected-choice');confetti(5);
+  };
+  g.appendChild(b);
+ });
+ $('pageBody').appendChild(g);
+}
+
+/* 3 — YOUR 21 QUALITIES */
+const qualities=[
+ ['Transparent and honest with me','🪞'],
+ ['Never judges me','🤍'],
+ ['Cute','🎀'],
+ ['Innocent','🥹'],
+ ['Your cute anger moments','😤'],
+ ['Caring','🫶'],
+ ['Humble','🌷'],
+ ['Kind','💗'],
+ ['Knowledgeable','📚'],
+ ['Always supportive','🤝'],
+ ['Always a good listener','👂'],
+ ['A good explainer','💡'],
+ ["Doesn’t think badly of anyone",'🕊️'],
+ ['Always thinks about everyone','🌍'],
+ ['A good cook','🍳'],
+ ['A true friend','♾️'],
+ ['Shares everything with me','🤗'],
+ ['Chhoti-masti-wali bachchi 😄','😜'],
+ ['Your cute jealous moments','🙈'],
+ ['A pure heart','❤️'],
+ ['A pure soul','🧿']
+];
+
+function qualitiesPage(){
+ intro('💎','21 Things I Adore About You','Tap every number to reveal a little reminder of what makes you special.');
+ const g=document.createElement('div');g.className='grid';
+
+ qualities.forEach((q,i)=>{
+  const b=document.createElement('button');
+  b.className='choice';
+  b.innerHTML=`<span>${q[1]}</span>Quality ${i+1}`;
+  b.onclick=()=>{
+   showSelection(q[1],'Quality '+(i+1)+' of 21',
+   q[0]+'. You make the world brighter just by being you, Atama! 🦋');
+   b.classList.add('selected-choice');
+  };
+  g.appendChild(b);
+ });
+ $('pageBody').appendChild(g);
+}
+
+/* 4 — MYSTERY HEARTS */
+function heartPage(){
+ intro('💗','Pick a Mystery Heart','Choose one heart to reveal your secret birthday blessing.');
+ const g=document.createElement('div');g.className='grid';
+
+ [
+  ['💕','Love','May you always be surrounded by sincere love, kindness and people who value you.'],
+  ['🌈','Happiness','May your worries become lighter and your reasons to smile become countless.'],
+  ['✨','Dreams','May you find courage to chase your dreams and joy in every achievement.']
+ ].forEach(o=>{
+  const b=document.createElement('button');b.className='choice';
+  b.innerHTML=`<span>${o[0]}</span>Mystery Heart`;
+  b.onclick=()=>{
+   if(g.dataset.chosen)return;
+   g.dataset.chosen='yes';
+   showSelection(o[0],o[1],o[2]);
+   g.querySelectorAll('button').forEach(x=>x.disabled=true);
+   confetti(20);
+  };
+  g.appendChild(b);
+ });
+ $('pageBody').appendChild(g);
+}
+
+/* 5 — FORTUNE MACHINE */
+function fortunePage(){
+ intro('🔮','Atama’s Fortune Machine','Make a secret wish and reveal your birthday fortune!');
+ panel(`<div style="font-size:70px;animation:glow 2s infinite">🔮</div><button class="btn" id="fortuneBtn">REVEAL MY FORTUNE ✨</button><div id="fortuneResult" class="hidden result"></div>`);
+
+ const messages=[
+ 'A beautiful new opportunity may arrive when you least expect it. Stay curious! 🌷',
+ 'Your next chapter will teach you something beautiful about yourself. 🦋',
+ 'Small steps, big dreams and a brave heart: that is your magic formula. 🌱',
+ 'May you meet people who celebrate your success and comfort you on hard days. 💗',
+ 'You have more strength than you realise. Trust your own journey. 👑'
+ ];
+
+ $('fortuneBtn').onclick=()=>{
+  $('fortuneResult').textContent=messages[Math.floor(Math.random()*messages.length)];
+  $('fortuneResult').classList.remove('hidden');
+  confetti(20);
+ };
+}
+
+/* 6 — BESTIE AWARDS */
+function awardsPage(){
+ intro('🏆','The Official Atama Awards','Claim your very important birthday awards!');
+ const g=document.createElement('div');g.className='grid';
+
+ [
+  ['😂','CEO of Making Me Laugh'],
+  ['👻','Cutest Ghost Alive'],
+  ['💗','Heart of Gold'],
+  ['🎀','Queen of Being Herself'],
+  ['🫶','Best Friend Forever'],
+  ['🌟','Main Character Energy']
+ ].forEach(a=>{
+  const b=document.createElement('button');b.className='choice';
+  b.innerHTML='<span>🎁</span>Claim my award';
+  b.onclick=()=>{
+   showSelection(a[0],a[1],'Official birthday award for the one and only Atama! Keep being wonderfully you. 💗');
+   b.style.background='#f0e8ff';confetti(4);
+  };
+  g.appendChild(b);
+ });
+ $('pageBody').appendChild(g);
+}
+
+/* 7 — FRIENDSHIP QUIZ */
+function quizPage(){
+ intro('🫶','Our Friendship Quiz','Choose your answers and see your friendship score!');
+
+ const qs=[
+  {q:'What makes a friendship truly special?',a:['Trust and care','Expensive gifts','Being perfect'],c:0,w:'Trust and care make a friendship feel safe. 💗'},
+  {q:'What should we do after a misunderstanding?',a:['Ignore forever','Talk honestly','Keep guessing'],c:1,w:'Honest communication helps friendships grow. 🫶'},
+  {q:'What do I wish for Atama?',a:['Stress forever','No dreams','Happiness and success'],c:2,w:'Exactly! You deserve happiness, growth and beautiful memories. 🎂'}
+ ];
+
+ let n=0,score=0;
+ const p=panel('<div id="quizArea"></div>');
+
+ function draw(){
+  const a=$('quizArea');
+  if(n>=qs.length){
+   a.innerHTML=`<div style="font-size:45px">🏆💗</div><h2>Quiz Complete!</h2><p>You got ${score} out of ${qs.length} answers right.</p><p>Our friendship is the real prize! 🫶</p>`;
+   confetti(18);return;
+  }
+
+  const q=qs[n];
+  a.innerHTML=`<span class="eyebrow">QUESTION ${n+1} / ${qs.length}</span><h2>${q.q}</h2>`;
+
+  q.a.forEach((v,i)=>{
+   const b=document.createElement('button');
+   b.className='btn soft';b.style.display='block';b.style.width='100%';b.textContent=v;
+   b.onclick=()=>{
+    a.querySelectorAll('button').forEach(x=>x.disabled=true);
+    if(i===q.c)score++;
+    const r=document.createElement('div');r.className='result';r.textContent=q.w;a.appendChild(r);
+    const next=document.createElement('button');next.className='btn';
+    next.textContent=n===qs.length-1?'SEE MY RESULT 🎉':'NEXT QUESTION ➜';
+    next.onclick=()=>{n++;draw()};
+    a.appendChild(next);
+   };
+   a.appendChild(b);
+  });
+ }
+ draw();
+}
+
+/* 8 — BIRTHDAY WHEEL */
+function wheelPage(){
+ intro('🎡','Spin the Birthday Wheel','One spin, one cute birthday mission!');
+
+ const missions=[
+  ['💃','Do your happiest birthday dance for 10 seconds!'],
+  ['🤳','Take a cute birthday selfie!'],
+  ['💌','Send someone you love a sweet message.'],
+  ['🍰','Eat something delicious and enjoy every bite!'],
+  ['🌷','Say three nice things about yourself.'],
+  ['🦋','Make one little plan for a dream you want to chase.'],
+  ['😂','Remember your funniest memory and laugh out loud!'],
+  ['👑','Say: “I am special, and I deserve happiness!”']
+ ];
+
+ panel(`<div id="wheel" style="font-size:95px;display:inline-block">🎡</div><br><button class="btn" id="spinBtn">SPIN MY WHEEL ✨</button><div id="wheelResult" class="hidden result"></div>`);
+
+ $('spinBtn').onclick=()=>{
+  const b=$('spinBtn');if(b.disabled)return;
+  b.disabled=true;$('wheel').style.animation='shake .3s infinite';
+  setTimeout(()=>{
+   $('wheel').style.animation='';
+   const v=missions[Math.floor(Math.random()*missions.length)];
+   $('wheelResult').innerHTML=`<div style="font-size:45px">${v[0]}</div><h2>Your Birthday Mission!</h2><p>${v[1]}</p>`;
+   $('wheelResult').classList.remove('hidden');confetti(22);
+  },1100);
+ };
+}
+
+/* 9 — WISH AND PROMISE */
+function promisePage(){
+ intro('🤝','One Wish From You','Atama, if you could ask one promise from me, what would it be? Your feelings matter. 💗');
+
+ const p=panel(`
+  <div style="font-size:43px">🥹💌</div>
+  <p>Choose a promise or write your own wish.</p>
+  <button class="btn soft" data-p="Always listen to me without judging.">👂 Listen without judging</button>
+  <button class="btn soft" data-p="Stand beside me when life gets difficult.">🫂 Be there for me</button>
+  <button class="btn soft" data-p="Never forget our friendship, even when life gets busy.">💗 Keep our friendship strong</button>
+  <button class="btn soft" data-p="Always be honest with me.">🤍 Always be honest</button>
+  <textarea class="field" id="promiseInput" rows="4" placeholder="My wish or promise request for you is..."></textarea>
+  <button class="btn" id="promiseSubmit">MY WISH IS... 💌</button>
+  <div id="promiseResult" class="hidden result"></div>
+ `);
+
+ p.querySelectorAll('[data-p]').forEach(b=>{
+  b.onclick=()=>{
+   $('promiseInput').value=b.dataset.p;
+   p.querySelectorAll('[data-p]').forEach(x=>x.style.outline='none');
+   b.style.outline='3px solid #d28ac2';
+  };
+ });
+
+ $('promiseSubmit').onclick=()=>{
+  const val=$('promiseInput').value.trim();
+  if(!val){toast('Atama, write your wish first! 🥹💗');return}
+
+  const r=$('promiseResult');r.innerHTML='';
+  const h=document.createElement('h2');h.textContent='Your wish matters, Atama 💗';
+  const q=document.createElement('p');q.textContent='Your wish: “'+val+'”';
+  const m=document.createElement('p');m.textContent='Thank you for sharing what matters to you. Your words deserve care. 🫶';
+  const s=document.createElement('p');s.className='small';s.textContent='This answer stays on this page and is not sent online.';
+  r.append(h,q,m,s);r.classList.remove('hidden');confetti(18);
+ };
+}
+
+/* 10 — HEARTFELT LETTER */
+function letterPage(){
+ intro('💌','A Letter From My Heart','Read slowly, birthday girl. Every word is wrapped in friendship. 🎀');
+
+ panel(`<div style="font-size:43px">🌷🧸💗</div><div class="letter" id="letterText"></div><button class="btn" id="letterHearts">SHOWER ME WITH LOVE 💕</button>`);
+
+ $('letterText').textContent=`My dearest Atama 👻💗,
+
+Happy 21st birthday to one of the most special girls in my life!
+
+Twenty years have brought you memories, lessons, laughter,
+challenges, little victories and moments that helped shape
+the wonderful person you are becoming.
+
+I hope you never forget that you do not have to be perfect
+to be precious. Your smile, personality, kindness, silly side
+and the way you are simply yourself make you truly special.
+
+Thank you for the conversations, jokes, memories and little
+things that make friendship beautiful. I hope your new year
+brings confidence when you doubt yourself, courage when life
+gets difficult, and people who appreciate your heart.
+
+May your dreams grow bigger, your worries grow lighter,
+and your happiness become something you feel every day.
+May you discover new things, create beautiful memories,
+and always find reasons to be proud of yourself.
+
+No matter how much life changes, I hope we keep supporting
+each other, laughing at silly things and making memories
+that we will remember with a smile.
+
+Thank you for choosing me as your best friend. 🥹💗
+You are like a mirror to me — transparent, honest, and someone
+I can always trust. You are also like my shadow, someone who
+makes me feel that I am never alone. 🫶🌎
+
+Thank you for trusting me, understanding me, and being such
+a special part of my life. I feel lucky to have a best friend
+like you. You are truly important to me, Atama. 👻🧿♥️
+
+You deserve a future that excites you, friendships that feel
+safe, and a life filled with love and genuine happiness.
+
+Happy birthday, Atama. Keep shining in your own way.
+Your next chapter is waiting, and I hope it is beautiful.
+
+With lots of love,
+Your bestie 💗`;
+
+ $('letterHearts').onclick=()=>confetti(50);
+}
+</script>
+</body>
+</html>
